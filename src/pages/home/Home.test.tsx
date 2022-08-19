@@ -7,3 +7,10 @@ test('should show heading', () => {
 
   expect(screen.getByText('Home')).toBeInTheDocument()
 })
+
+test('It should display response query', async () => {
+  render(<Home />)
+
+  expect(await screen.findByText('reactjs')).toBeInTheDocument()
+  expect(await screen.findByText('20')).toBeInTheDocument()
+})
