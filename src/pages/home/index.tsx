@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 
 import './Home.css'
-import { Post } from './models/Post'
+import type { Post } from './models/Post'
 import { getHackerNews } from './services/hackerNews.service'
 
 const Home = () => {
-  const [state, setState] = useState<any>()
+  const [state, setState] = useState<{
+    hits: Post[]
+    page: number
+  }>()
   useEffect(() => {
     getHackerNews('reactjs', 20).then(setState)
   }, [])
@@ -14,10 +17,13 @@ const Home = () => {
     <div>
       <h1>Home</h1>
       {state && (
-        <>
-          <p>{state.query}</p>
-          <p>{state.page}</p>
-        </>
+        <div>
+          {state.hits.map((post) => (
+            <div key={post.story_id}>
+              <h2>{post.story_title}</h2>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   )
