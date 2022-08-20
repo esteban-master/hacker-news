@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
+import PostComponent from './components/post'
 import './Home.css'
 import type { Post } from './models/Post'
 import { getHackerNews } from './services/hackerNews.service'
@@ -10,7 +11,12 @@ const Home = () => {
     page: number
   }>()
   useEffect(() => {
-    getHackerNews('reactjs', 20).then(setState)
+    getHackerNews('reactjs', 20).then((data) => {
+      setState({
+        hits: data.hits.filter((item) => item.objectID),
+        page: data.page,
+      })
+    })
   }, [])
 
   return (
@@ -19,9 +25,7 @@ const Home = () => {
       {state && (
         <div>
           {state.hits.map((post) => (
-            <div key={post.story_id}>
-              <h2>{post.story_title}</h2>
-            </div>
+            <PostComponent key={post.objectID} post={post} isFavorite={false} />
           ))}
         </div>
       )}

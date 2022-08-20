@@ -1,5 +1,6 @@
 import { rest } from 'msw'
 
+import { generatePostList } from '../src/factories/post'
 import type { Post } from '../src/pages/home/models/Post'
 
 type Response = {
@@ -7,14 +8,15 @@ type Response = {
   page: number
 }
 
-export const getHackerNews = (
-  response: Response = { hits: [], page: 0 },
-  status = 200
-) => {
+export const getHackerNews = (response?: Response, status = 200) => {
   return rest.get(
     'https://hn.algolia.com/api/v1/search_by_date',
     (req, res, ctx) => {
-      return res(ctx.status(status), ctx.json(response))
+      const page = req.url.searchParams.get('page')
+      return res(
+        ctx.status(status),
+        ctx.json(response ? response : { hits: generatePostList(2), page })
+      )
     }
   )
 }

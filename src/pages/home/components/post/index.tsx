@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { Post } from '../../models/Post'
+import type { Post } from '../../models/Post'
 
 type Props = {
   post: Post
   isFavorite: boolean
 }
 
-const Post = ({ post, isFavorite }: Props) => {
+export default function ({ post, isFavorite }: Props) {
   return (
     <div>
       <a href={post.story_url} target="_blank">
@@ -20,17 +20,11 @@ const Post = ({ post, isFavorite }: Props) => {
       </a>
       <div>
         {isFavorite ? (
-          <button>
-            <img src="/iconmonstr-favorite-3.svg" alt="heart icon fill" />
-          </button>
+          <img src="/iconmonstr-favorite-3.svg" alt="heart icon fill" />
         ) : (
-          <button>
-            <img src="/iconmonstr-favorite-2.svg" alt="heart icon" />
-          </button>
+          <img src="/iconmonstr-favorite-2.svg" alt="heart icon" />
         )}
       </div>
     </div>
   )
 }
-
-export default Post

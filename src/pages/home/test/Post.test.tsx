@@ -1,9 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 
+import { generatePost } from '../../../factories/post'
 import Post from '../components/post'
-
-import { generatePost } from './factories/post'
 
 test('should show post attributes', () => {
   const post = generatePost()

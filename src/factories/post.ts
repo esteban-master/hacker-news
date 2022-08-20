@@ -1,12 +1,12 @@
 import { faker } from '@faker-js/faker'
 import { Factory } from 'fishery'
 
-import type { Post } from '../../models/Post'
+import type { Post } from '../pages/home/models/Post'
 
 const postFactory = Factory.define<Post>(({ sequence }) => ({
   author: faker.name.firstName(),
   created_at: faker.date.past(),
-  story_id: sequence,
+  objectID: sequence,
   story_title: faker.lorem.sentence(),
   story_url: faker.internet.url(),
 }))

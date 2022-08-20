@@ -4,8 +4,7 @@ import React from 'react'
 import Home from '..'
 import { getHackerNews } from '../../../../mocks/handlers'
 import { server } from '../../../../mocks/server'
-
-import { generatePostList } from './factories/post'
+import { generatePostList } from '../../../factories/post'
 test('should show heading', () => {
   render(<Home />)
 
