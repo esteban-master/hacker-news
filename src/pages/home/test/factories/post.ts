@@ -11,6 +11,10 @@ const postFactory = Factory.define<Post>(({ sequence }) => ({
   story_url: faker.internet.url(),
 }))
 
+export const generatePost = (params?: Partial<Post>) => {
+  return postFactory.build(params)
+}
+
 export const generatePostList = (number = 10, params?: Partial<Post>) => {
   return postFactory.buildList(number, params)
 }
