@@ -41,7 +41,10 @@ const Home = () => {
           { id: 2, label: 'Vuejs', value: 'vuejs' },
           { id: 3, label: 'Angular', value: 'angular' },
         ]}
-        onChange={(value) => setFilterQuery(value)}
+        onChange={(value) => {
+          setPage(0)
+          setFilterQuery(value)
+        }}
       />
       {state && (
         <div>

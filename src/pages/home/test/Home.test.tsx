@@ -16,6 +16,7 @@ test('It should display a list of 5 posts on the first page', async () => {
   server.use(
     getHackerNews({
       hits: posts,
+      nbPages: 50,
       page: 0,
     })
   )
