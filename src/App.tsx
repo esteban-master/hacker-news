@@ -9,7 +9,11 @@ import Home from './pages/home'
 const App: React.FC = () => {
   return (
     <main className="App">
-      <h1>Hacker News</h1>
+      <div className="header">
+        <div className="container">
+          <h1>Hacker News</h1>
+        </div>
+      </div>
       <div className="container">
         <LocalStorageProvider>
           <Home />

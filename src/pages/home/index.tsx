@@ -6,6 +6,7 @@ import { useLocalStorage } from '../../context/LocalStorageContext'
 import FavoritePosts from './components/favoritePosts'
 import { PostList } from './components/postList'
 import SelectFilter from './components/selectFilter'
+import SelectTab from './components/selectTab'
 import './Home.css'
 import type { Post } from './models/Post'
 import { getHackerNews } from './services/hackerNews.service'
@@ -27,6 +28,8 @@ const Home = () => {
 
   const [page, setPage] = useState(0)
 
+  const [selectTab, setSelectTab] = useState('All')
+
   useEffect(() => {
     setIsLoading(true)
     getHackerNews(filter.toLowerCase(), page).then((data) => {
@@ -41,17 +44,23 @@ const Home = () => {
 
   return (
     <div>
-      <SelectFilter />
-      {isLoading ? (
-        <p>Loading posts...</p>
-      ) : (
-        <div>
-          <PostList posts={state.hits} />
-        </div>
-      )}
+      <SelectTab selected={selectTab} setSelectTab={setSelectTab} />
 
-      <h1>Favorites</h1>
-      <FavoritePosts />
+      <SelectFilter />
+
+      {selectTab === 'All' ? (
+        <React.Fragment>
+          {isLoading ? (
+            <p>Loading posts...</p>
+          ) : (
+            <div>
+              <PostList posts={state.hits} />
+            </div>
+          )}
+        </React.Fragment>
+      ) : (
+        <FavoritePosts />
+      )}
 
       <Pagination
         onChange={(value) => setPage(value)}
