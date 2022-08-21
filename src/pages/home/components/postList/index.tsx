@@ -4,6 +4,8 @@ import { useFavoritePosts } from '../../../../hooks/useFavoritePosts'
 import type { Post } from '../../models/Post'
 import PostComponent from '../post'
 
+import './PostList.css'
+
 type Props = {
   posts: Post[]
 }
@@ -25,7 +27,7 @@ export const PostList = ({ posts }: Props) => {
   }
 
   return (
-    <div>
+    <div className="list-post">
       {posts.map((post) => {
         const postIsfavorite = isFavorite(post)
 
