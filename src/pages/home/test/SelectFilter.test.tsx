@@ -37,7 +37,10 @@ test('select reactjs option', async () => {
   render(<SelectFilter onChange={onChangeMock} options={options} />)
 
   const [reactOption] = options
-  await user.selectOptions(screen.getByRole('combobox'), reactOption.label)
+  await user.selectOptions(
+    screen.getByRole('combobox', { name: 'filter-query' }),
+    reactOption.label
+  )
   expect(onChangeMock).toHaveBeenCalledTimes(1)
   expect(onChangeMock).toHaveBeenCalledWith(reactOption.value)
 })

@@ -2,7 +2,7 @@ import type { ChangeEvent } from 'react'
 import React from 'react'
 
 type Props = {
-  onChange: (value: string) => string
+  onChange: (value: string) => void
   options: { id: number; value: string; label: string }[]
 }
 
@@ -11,7 +11,7 @@ const SelectFilter = ({ onChange, options }: Props) => {
     onChange(e.target.value)
   }
   return (
-    <select onChange={handleOnChange}>
+    <select aria-label="filter-query" onChange={handleOnChange}>
       {options.map((item) => (
         <option key={item.id} value={item.value}>
           {item.label}
