@@ -18,23 +18,24 @@ const Home = () => {
     nbPages: 0,
     page: 0,
   })
-
+  const [isLoading, setIsLoading] = useState(false)
   const [filterQuery, setFilterQuery] = useState('reactjs')
   const [page, setPage] = useState(0)
 
   useEffect(() => {
+    setIsLoading(true)
     getHackerNews(filterQuery, page).then((data) => {
       setState({
         hits: data.hits.filter((item) => item.objectID),
         nbPages: data.nbPages,
         page: data.page,
       })
+      setIsLoading(false)
     })
   }, [filterQuery, page])
 
   return (
     <div>
-      <h1>Home</h1>
       <SelectFilter
         options={[
           { id: 1, label: 'Reactjs', value: 'reactjs' },
@@ -46,7 +47,9 @@ const Home = () => {
           setFilterQuery(value)
         }}
       />
-      {state && (
+      {isLoading ? (
+        <p>Loading posts...</p>
+      ) : (
         <div>
           {state.hits.map((post) => (
             <PostComponent

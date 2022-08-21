@@ -5,10 +5,10 @@ import Home from '..'
 import { getHackerNews } from '../../../../mocks/handlers'
 import { server } from '../../../../mocks/server'
 import { generatePostList } from '../../../factories/post'
-test('should show heading', () => {
-  render(<Home />)
 
-  expect(screen.getByText('Home')).toBeInTheDocument()
+test('should show loading posts', () => {
+  render(<Home />)
+  expect(screen.getByText('Loading posts...')).toBeInTheDocument()
 })
 
 test('It should display a list of 5 posts on the first page', async () => {
@@ -27,4 +27,6 @@ test('It should display a list of 5 posts on the first page', async () => {
       expect(screen.getByText(post.story_title)).toBeInTheDocument()
     )
   })
+
+  expect(screen.queryByText('Loading posts...')).not.toBeInTheDocument()
 })
