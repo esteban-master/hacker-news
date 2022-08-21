@@ -34,7 +34,15 @@ const Home = () => {
     setIsLoading(true)
     getHackerNews(filter.toLowerCase(), page).then((data) => {
       setState({
-        hits: data.hits.filter((item) => item.objectID),
+        hits: data.hits.filter((item) => {
+          return (
+            item.objectID ||
+            item.story_url ||
+            item.story_title ||
+            item.author ||
+            item.created_at
+          )
+        }),
         nbPages: data.nbPages,
         page: data.page,
       })
