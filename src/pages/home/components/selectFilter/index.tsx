@@ -15,7 +15,6 @@ const SelectFilter = ({ onChange, options }: Props) => {
     onChange(e.target.value)
   }
 
-  console.log({ value })
   return (
     <select aria-label="filter-query" value={value} onChange={handleOnChange}>
       {options.map((item) => (

@@ -5,7 +5,7 @@ import type { Post } from '../pages/home/models/Post'
 
 const postFactory = Factory.define<Post>(({ sequence }) => ({
   author: faker.name.firstName(),
-  created_at: faker.date.past(),
+  created_at: faker.date.past().toISOString(),
   objectID: sequence,
   story_title: faker.lorem.sentence(),
   story_url: faker.internet.url(),

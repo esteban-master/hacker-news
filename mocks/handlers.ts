@@ -19,7 +19,7 @@ export const getHackerNews = (response?: Response, status = 200) => {
         ctx.json(
           response
             ? response
-            : { hits: generatePostList(2), nbPages: 50, page: Number(page) }
+            : { hits: generatePostList(5), nbPages: 50, page: Number(page) }
         )
       )
     }

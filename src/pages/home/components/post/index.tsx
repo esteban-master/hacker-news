@@ -1,6 +1,9 @@
 import React from 'react'
 
+import { timeAgo } from '../../../../utils/timeAgo'
 import type { Post } from '../../models/Post'
+
+import './Post.css'
 
 type Props = {
   post: Post
@@ -10,10 +13,12 @@ type Props = {
 
 export default function ({ post, isFavorite, handleFavorite }: Props) {
   return (
-    <div>
+    <div className="card">
       <a href={post.story_url} target="_blank">
         <div>
-          <p>2 hours age by {post.author}</p>
+          <p>
+            {timeAgo(new Date(post.created_at))} by {post.author}
+          </p>
         </div>
         <div>
           <h2>{post.story_title}</h2>

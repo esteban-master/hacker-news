@@ -7,11 +7,15 @@ import { generatePost } from '../../../../factories/post'
 import Post from '.'
 
 test('should show post attributes', () => {
-  const post = generatePost()
+  const date = new Date()
+  date.setDate(date.getDate() - 1)
+  const post = generatePost({
+    created_at: date.toISOString(),
+  })
   render(<Post post={post} isFavorite={false} handleFavorite={() => {}} />)
 
   expect(screen.getByText(post.story_title)).toBeInTheDocument()
-  expect(screen.getByText(`2 hours age by ${post.author}`)).toBeInTheDocument()
+  expect(screen.getByText(`1 day ago by ${post.author}`)).toBeInTheDocument()
   expect(screen.getByAltText('heart icon')).toBeInTheDocument()
 })
 
