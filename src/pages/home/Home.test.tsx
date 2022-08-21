@@ -1,11 +1,11 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import React from 'react'
 
-import Home from '..'
-import { getHackerNews } from '../../../../mocks/handlers'
-import { server } from '../../../../mocks/server'
-import { generatePostList } from '../../../factories/post'
+import { getHackerNews } from '../../../mocks/handlers'
+import { server } from '../../../mocks/server'
+import { generatePostList } from '../../factories/post'
 
+import Home from '.'
 test('should show loading posts', () => {
   render(<Home />)
   expect(screen.getByText('Loading posts...')).toBeInTheDocument()

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import Pagination from '../../components/pagination'
 
-import PostComponent from './components/post'
+import { PostList } from './components/postList'
 import SelectFilter from './components/selectFilter'
 import './Home.css'
 import type { Post } from './models/Post'
@@ -51,14 +51,7 @@ const Home = () => {
         <p>Loading posts...</p>
       ) : (
         <div>
-          {state.hits.map((post) => (
-            <PostComponent
-              key={post.objectID}
-              post={post}
-              isFavorite={false}
-              handleFavorite={() => {}}
-            />
-          ))}
+          <PostList posts={state.hits} />
         </div>
       )}
 

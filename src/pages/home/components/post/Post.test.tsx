@@ -2,8 +2,9 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
 
-import { generatePost } from '../../../factories/post'
-import Post from '../components/post'
+import { generatePost } from '../../../../factories/post'
+
+import Post from '.'
 
 test('should show post attributes', () => {
   const post = generatePost()

@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
 
-import Pagination from '../pagination'
+import Pagination from '.'
 
 test('should show buttons with number page', async () => {
   const pages = [1, 2, 3, 4, 5]

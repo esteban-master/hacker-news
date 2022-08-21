@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
 
-import SelectFilter from '../components/selectFilter'
+import SelectFilter from '.'
 
 test('should show select with options', async () => {
   const onChangeMock = jest.fn()
