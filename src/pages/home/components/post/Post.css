@@ -1,3 +1,51 @@
-.card {
-  background-color: blueviolet;
+a {
+  text-decoration: none;
+}
+
+.card-post {
+  opacity: 0.8;
+  border-radius: 6px;
+  border: solid 1px #979797;
+  background-color: #fff;
+}
+
+.content-post {
+  display: grid;
+  grid-template-columns: 85% 15%;
+}
+
+.content-post .link {
+  padding: 11px;
+}
+
+.time-ago {
+  font-size: 11px;
+  color: #767676;
+}
+
+.time-ago p {
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.title-post {
+  font-size: 14px;
+  margin-top: 0;
+  color: #6b6b6b;
+  line-height: 1.43;
+  letter-spacing: 0.25px;
+}
+
+.like-button {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.like-button::after {
+  content: '';
+  opacity: 0.06;
+  background-color: #606060;
 }
