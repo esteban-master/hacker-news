@@ -9,7 +9,9 @@ const App: React.FC = () => {
   return (
     <main className="App">
       <h1>Hacker News</h1>
-      <Home />
+      <div className="container">
+        <Home />
+      </div>
     </main>
   )
 }

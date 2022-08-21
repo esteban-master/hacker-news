@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import './Pagination.css'
 
 type Props = {
   currentPage: number
@@ -23,9 +24,13 @@ const Pagination = ({ currentPage, totalPages, onChange }: Props) => {
   )
 
   return (
-    <div>
+    <div className="container-buttons">
       {pageItems.map((page) => (
-        <button key={page} onClick={() => onChange(page - 1)}>
+        <button
+          className={`button ${currentPage === page ? 'active' : ''}`}
+          key={page}
+          onClick={() => onChange(page - 1)}
+        >
           {page}
         </button>
       ))}

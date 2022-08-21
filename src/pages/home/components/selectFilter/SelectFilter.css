@@ -1,0 +1,53 @@
+.selectbox {
+	width: 240px;
+	position: relative;
+  margin: 20px 0;
+}
+
+.select {
+	background: #fff;
+	width: 100%;
+	border-radius: 10px;
+	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	transition: .2s ease all;
+	position: relative;
+	z-index: 200;
+}
+
+
+.title {
+	margin-bottom: 10px;
+	color: #343434;
+	font-size: 14px;
+}
+
+
+.options {
+	overflow: auto;
+	z-index: 100;
+	width: 100%;
+  position: absolute;
+}
+
+
+.content-option {
+  background: white;
+  border: none;
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.opciones .content-option {
+	padding: 10px;
+  cursor: pointer;
+}
+
+.content-option img {
+	width: 29px;
+	height: 28px;
+	margin-right: 24px;
+}

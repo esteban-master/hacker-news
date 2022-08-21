@@ -26,7 +26,7 @@ const Home = () => {
 
   useEffect(() => {
     setIsLoading(true)
-    getHackerNews(filterQuery, page).then((data) => {
+    getHackerNews(filterQuery.toLowerCase(), page).then((data) => {
       setState({
         hits: data.hits.filter((item) => item.objectID),
         nbPages: data.nbPages,
