@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import Pagination from '../../components/pagination'
+import { useSelectFilter } from '../../hooks/useSelectFilter'
 
 import { PostList } from './components/postList'
 import SelectFilter from './components/selectFilter'
@@ -19,7 +20,8 @@ const Home = () => {
     page: 0,
   })
   const [isLoading, setIsLoading] = useState(false)
-  const [filterQuery, setFilterQuery] = useState('reactjs')
+  const { value } = useSelectFilter('reactjs')
+  const [filterQuery, setFilterQuery] = useState(value)
   const [page, setPage] = useState(0)
 
   useEffect(() => {

@@ -1,9 +1,11 @@
 import { useState } from 'react'
 
-export const useSelectFilter = (defaultValue: string) => {
-  const [value, setValue] = useState(
+export type Filter = 'reactjs' | 'vuejs' | 'angular'
+
+export const useSelectFilter = (defaultValue: Filter) => {
+  const [value, setValue] = useState<string>(
     localStorage.getItem('filter')
-      ? localStorage.getItem('filter')
+      ? localStorage.getItem('filter')!
       : defaultValue
   )
 
