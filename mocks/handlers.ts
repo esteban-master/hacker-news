@@ -6,6 +6,7 @@ import type { Post } from '../src/pages/home/models/Post'
 type Response = {
   hits: Post[]
   page: number
+  nbPages: number
 }
 
 export const getHackerNews = (response?: Response, status = 200) => {
@@ -15,7 +16,11 @@ export const getHackerNews = (response?: Response, status = 200) => {
       const page = req.url.searchParams.get('page')
       return res(
         ctx.status(status),
-        ctx.json(response ? response : { hits: generatePostList(2), page })
+        ctx.json(
+          response
+            ? response
+            : { hits: generatePostList(2), nbPages: 50, page: Number(page) }
+        )
       )
     }
   )
