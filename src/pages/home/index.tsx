@@ -36,10 +36,10 @@ const Home = () => {
       setState({
         hits: data.hits.filter((item) => {
           return (
-            item.objectID ||
-            item.story_url ||
-            item.story_title ||
-            item.author ||
+            item.objectID &&
+            item.story_url &&
+            item.story_title &&
+            item.author &&
             item.created_at
           )
         }),
