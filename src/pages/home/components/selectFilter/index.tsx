@@ -1,21 +1,17 @@
-import type { ChangeEvent } from 'react'
 import React, { useState } from 'react'
 
-import { useSelectFilter } from '../../../../hooks/useSelectFilter'
+import { useLocalStorage } from '../../../../context/LocalStorageContext'
 
 import './SelectFilter.css'
 
-type Props = {
-  onChange: (value: string) => void
-  options: { id: number; value: string; label: string }[]
-}
-
-const SelectFilter = ({ onChange, options }: Props) => {
-  const { value, setFilter } = useSelectFilter('reactjs')
+const SelectFilter = () => {
+  const {
+    state: { filter },
+    setFilter,
+  } = useLocalStorage()
   const [open, setOpen] = useState(false)
   const handleOnChange = (value: string) => {
     setFilter(value)
-    onChange(value)
     setOpen(false)
   }
 
@@ -30,7 +26,7 @@ const SelectFilter = ({ onChange, options }: Props) => {
           }}
         >
           <div className="contenido-select">
-            <p className="titulo">{value}</p>
+            <p className="titulo">{filter}</p>
           </div>
         </button>
 

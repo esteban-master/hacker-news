@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 
 import Pagination from '../../components/pagination'
-import { useSelectFilter } from '../../hooks/useSelectFilter'
+import { useLocalStorage } from '../../context/LocalStorageContext'
 
+import FavoritePosts from './components/favoritePosts'
 import { PostList } from './components/postList'
 import SelectFilter from './components/selectFilter'
 import './Home.css'
@@ -20,13 +21,15 @@ const Home = () => {
     page: 0,
   })
   const [isLoading, setIsLoading] = useState(false)
-  const { value } = useSelectFilter('reactjs')
-  const [filterQuery, setFilterQuery] = useState(value)
+  const {
+    state: { filter },
+  } = useLocalStorage()
+
   const [page, setPage] = useState(0)
 
   useEffect(() => {
     setIsLoading(true)
-    getHackerNews(filterQuery.toLowerCase(), page).then((data) => {
+    getHackerNews(filter.toLowerCase(), page).then((data) => {
       setState({
         hits: data.hits.filter((item) => item.objectID),
         nbPages: data.nbPages,
@@ -34,21 +37,11 @@ const Home = () => {
       })
       setIsLoading(false)
     })
-  }, [filterQuery, page])
+  }, [filter, page])
 
   return (
     <div>
-      <SelectFilter
-        options={[
-          { id: 1, label: 'Reactjs', value: 'reactjs' },
-          { id: 2, label: 'Vuejs', value: 'vuejs' },
-          { id: 3, label: 'Angular', value: 'angular' },
-        ]}
-        onChange={(value) => {
-          setPage(0)
-          setFilterQuery(value)
-        }}
-      />
+      <SelectFilter />
       {isLoading ? (
         <p>Loading posts...</p>
       ) : (
@@ -56,6 +49,9 @@ const Home = () => {
           <PostList posts={state.hits} />
         </div>
       )}
+
+      <h1>Favorites</h1>
+      <FavoritePosts />
 
       <Pagination
         onChange={(value) => setPage(value)}
