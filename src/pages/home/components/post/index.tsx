@@ -5,9 +5,10 @@ import type { Post } from '../../models/Post'
 type Props = {
   post: Post
   isFavorite: boolean
+  handleFavorite: () => void
 }
 
-export default function ({ post, isFavorite }: Props) {
+export default function ({ post, isFavorite, handleFavorite }: Props) {
   return (
     <div>
       <a href={post.story_url} target="_blank">
@@ -20,9 +21,13 @@ export default function ({ post, isFavorite }: Props) {
       </a>
       <div>
         {isFavorite ? (
-          <img src="/iconmonstr-favorite-3.svg" alt="heart icon fill" />
+          <button aria-label="favorite" onClick={handleFavorite}>
+            <img src="/iconmonstr-favorite-3.svg" alt="heart icon fill" />
+          </button>
         ) : (
-          <img src="/iconmonstr-favorite-2.svg" alt="heart icon" />
+          <button aria-label="favorite" onClick={handleFavorite}>
+            <img src="/iconmonstr-favorite-2.svg" alt="heart icon" />
+          </button>
         )}
       </div>
     </div>
